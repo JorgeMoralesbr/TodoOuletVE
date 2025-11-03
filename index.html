@@ -47,6 +47,8 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
+            color: white;
+            text-decoration: none;
         }
 
         .nav-links {
@@ -95,6 +97,7 @@
             border-radius: 10px;
             background: #f8f9fa;
             border: 2px solid #e9ecef;
+            text-align: center;
         }
 
         .payment-icon {
@@ -279,29 +282,68 @@
         .footer-section a:hover {
             color: white;
         }
+
+        .qr-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .qr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .qr-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .qr-image {
+            width: 150px;
+            height: 150px;
+            background: #f8f9fa;
+            border: 2px dashed #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .qr-placeholder {
+            color: #666;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="nav-container">
-            <div class="logo">TodoOutletVE</div>
+            <a href="#" class="logo">TodoOutletVE</a>
             <ul class="nav-links">
                 <li><a href="#">Inicio</a></li>
-                <li><a href="#">Produtos</a></li>
-                <li><a href="#">Pagamentos</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#pagamentos">Pagamentos</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
             <div class="cart-icon">🛒 Carrinho (0)</div>
         </div>
     </header>
 
-    <section class="hero">
+    <section class="hero" id="inicio">
         <h1>Moda e Tecnologia para Jovens e Adultos</h1>
-        <p>Os produtos mais procurados com os melhores precos do Brasil</p>
+        <p>Os produtos mais procurados com os melhores preços do Brasil</p>
         <button class="cta-button">Ver Ofertas da Semana</button>
     </section>
 
-    <section class="products-section">
+    <section class="products-section" id="produtos">
         <h2 class="section-title">Produtos em Destaque</h2>
         <div class="products-grid">
             <div class="product-card">
@@ -342,21 +384,41 @@
         </div>
     </section>
 
-    <section class="payment-methods">
+    <section class="qr-section">
+        <h2 class="section-title">Escaneie e Converse Conosco</h2>
+        <div class="qr-grid">
+            <div class="qr-card">
+                <h3>📱 WhatsApp</h3>
+                <div class="qr-image">
+                    <span class="qr-placeholder">QR WhatsApp<br>(subir imagem)</span>
+                </div>
+                <p>Escaneie para conversar</p>
+            </div>
+            <div class="qr-card">
+                <h3>💰 PIX</h3>
+                <div class="qr-image">
+                    <span class="qr-placeholder">QR PIX<br>(subir imagem)</span>
+                </div>
+                <p>Escaneie para pagar</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="payment-methods" id="pagamentos">
         <h2 class="section-title">Formas de Pagamento</h2>
         <div class="payment-grid">
             <div class="payment-card">
                 <div class="payment-icon">💰</div>
                 <h3>PIX</h3>
-                <p>Pagamento instantaneo</p>
+                <p>Pagamento instantâneo</p>
                 <div class="pix-code" id="pixCode">08185140944</div>
                 <button class="copy-btn" onclick="copyPixCode()">Copiar Chave PIX</button>
             </div>
             
             <div class="payment-card">
                 <div class="payment-icon">🏦</div>
-                <h3>Transferencia Bancaria</h3>
-                <p>Banco CAIXA ECONOMICA FEDERAL</p>
+                <h3>Transferência Bancária</h3>
+                <p>Banco CAIXA ECONÔMICA FEDERAL</p>
                 <p>Chave PIX: 08185140944</p>
             </div>
             
@@ -370,31 +432,31 @@
     </section>
 
     <div class="social-links">
-        <a href="https://twitter.com/" class="social-icon" target="_blank">X</a>
+        <a href="https://x.com/TodoOuletVE" class="social-icon" target="_blank">X</a>
         <a href="https://tiktok.com/@TodoOuletVE" class="social-icon" target="_blank">TT</a>
         <a href="https://instagram.com/TodoOuletVE" class="social-icon" target="_blank">IG</a>
         <a href="https://facebook.com/" class="social-icon" target="_blank">FB</a>
     </div>
 
-    <footer class="footer">
+    <footer class="footer" id="contato">
         <div class="footer-content">
             <div class="footer-section">
                 <h3>TodoOutletVE</h3>
                 <p>Os melhores produtos para jovens e adultos desde 2024</p>
             </div>
             <div class="footer-section">
-                <h3>Links Rapidos</h3>
-                <a href="#">Inicio</a>
-                <a href="#">Produtos</a>
-                <a href="#">Pagamentos</a>
-                <a href="#">Contato</a>
+                <h3>Links Rápidos</h3>
+                <a href="#inicio">Início</a>
+                <a href="#produtos">Produtos</a>
+                <a href="#pagamentos">Pagamentos</a>
+                <a href="#contato">Contato</a>
             </div>
             <div class="footer-section">
                 <h3>Contato & Pagamentos</h3>
                 <a href="https://wa.me/5541996347646" target="_blank">📱 WhatsApp: (41) 99634-7646</a>
                 <a href="mailto:todooutletve@gmail.com">📧 todooutletve@gmail.com</a>
                 <a href="#">📍 Rua Visconde do Rio Branco, 1189<br>Curitiba, PR - CEP 80410-001</a>
-                <a href="#">🏦 CAIXA ECONOMICA FEDERAL</a>
+                <a href="#">🏦 CAIXA ECONÔMICA FEDERAL</a>
                 <a href="#">💰 PIX: 08185140944</a>
             </div>
         </div>
@@ -429,15 +491,29 @@
             document.execCommand('copy');
             document.body.removeChild(textArea);
             
-            alert('Chave PIX copiada para a area de transferencia!');
+            alert('Chave PIX copiada para a área de transferência!');
         }
 
         cartIcon.addEventListener('click', function() {
             if (cartCount > 0) {
-                const message = `Ola! Gostaria de comprar ${cartCount} produto(s) do TodoOutletVE. Pode me enviar as informacoes de pagamento?`;
+                const message = `Olá! Gostaria de comprar ${cartCount} produto(s) do TodoOutletVE. Pode me enviar as informações de pagamento?`;
                 const whatsappURL = `https://wa.me/5541996347646?text=${encodeURIComponent(message)}`;
                 window.open(whatsappURL, '_blank');
             }
+        });
+
+        // Navegação suave para as seções
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>
