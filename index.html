@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TodoOutletVE - Moda e Tecnologia</title>
     <style>
-        /* Estilos generales actualizados */
         * {
             margin: 0;
             padding: 0;
@@ -24,7 +23,6 @@
             padding: 0 20px;
         }
 
-        /* Header */
         header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -63,7 +61,6 @@
             font-size: 0.8rem;
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3');
             background-size: cover;
@@ -97,7 +94,6 @@
             background: #764ba2;
         }
 
-        /* Productos Destacados */
         .featured-products {
             padding: 4rem 0;
             background: #f8f9fa;
@@ -169,7 +165,6 @@
             background: #764ba2;
         }
 
-        /* Modal del Carrito */
         .modal {
             display: none;
             position: fixed;
@@ -238,7 +233,6 @@
             margin-top: 1rem;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero-content h1 {
                 font-size: 2rem;
@@ -257,7 +251,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container header-content">
             <div class="logo">TodoOutletVE</div>
@@ -267,7 +260,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Moda e Tecnologia para Jovens e Adultos</h1>
@@ -276,12 +268,10 @@
         </div>
     </section>
 
-    <!-- Productos Destacados -->
     <section id="featured-products" class="featured-products">
         <div class="container">
             <h2 class="section-title">Produtos em Destaque</h2>
             <div class="products-grid">
-                <!-- Producto 1 -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3" alt="Smartwatch" class="product-image">
                     <div class="product-info">
@@ -294,7 +284,6 @@
                     </div>
                 </div>
 
-                <!-- Producto 2 -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?ixlib=rb-4.0.3" alt="Tênis" class="product-image">
                     <div class="product-info">
@@ -307,7 +296,6 @@
                     </div>
                 </div>
 
-                <!-- Producto 3 -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3" alt="Bolsa" class="product-image">
                     <div class="product-info">
@@ -320,7 +308,6 @@
                     </div>
                 </div>
 
-                <!-- Producto 4 -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3" alt="Fones" class="product-image">
                     <div class="product-info">
@@ -336,7 +323,6 @@
         </div>
     </section>
 
-    <!-- Modal del Carrito -->
     <div id="cart-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeCartModal()">&times;</span>
@@ -368,8 +354,82 @@
     </div>
 
     <script>
-        // Aquí va el código JavaScript del carrito que te envié arriba
-        // Copia y pega el código JavaScript completo aquí
+        // CÓDIGO JAVASCRIPT DEL CARRITO - ¡LISTO PARA USAR!
+        let cart = [];
+
+        function addToCart(productName, productPrice) {
+            cart.push({ name: productName, price: productPrice });
+            updateCartCount();
+            showCartModal();
+        }
+
+        function updateCartCount() {
+            document.getElementById('cart-count').textContent = cart.length;
+        }
+
+        function showCartModal() {
+            let modal = document.getElementById('cart-modal');
+            let cartItems = document.getElementById('cart-items');
+            let cartTotal = document.getElementById('cart-total');
+            
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                total += item.price;
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <span>${item.name}</span>
+                        <span>R$ ${item.price.toFixed(2)}</span>
+                    </div>
+                `;
+            });
+            
+            cartTotal.textContent = total.toFixed(2);
+            modal.style.display = 'block';
+        }
+
+        function closeCartModal() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+
+        function sendWhatsAppOrder() {
+            let customerName = document.getElementById('customer-name').value;
+            let customerAddress = document.getElementById('customer-address').value;
+            let customerCEP = document.getElementById('customer-cep').value;
+            
+            if (!customerName || !customerAddress || !customerCEP) {
+                alert('Por favor, complete todos os dados de envío');
+                return;
+            }
+            
+            let message = `🛒 *PEDIDO - TodoOutletVE* 🛒\n\n`;
+            message += `*Cliente:* ${customerName}\n`;
+            message += `*Dirección:* ${customerAddress}\n`;
+            message += `*CEP:* ${customerCEP}\n\n`;
+            message += `*Productos:*\n`;
+            
+            let total = 0;
+            cart.forEach(item => {
+                message += `• ${item.name} - R$ ${item.price.toFixed(2)}\n`;
+                total += item.price;
+            });
+            
+            message += `\n*Total: R$ ${total.toFixed(2)}*`;
+            message += `\n\n_*Métodos de pago:*_\n`;
+            message += `💳 PIX\n`;
+            message += `💳 Tarjeta de Crédito (hasta 12x)\n`;
+            message += `💳 Transferencia Bancaria`;
+            
+            const phone = "5541996347646"; // ← CAMBIA ESTE NÚMERO
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${phone}?text=${encodedMessage}`, '_blank');
+            
+            // Resetear carrito
+            cart = [];
+            updateCartCount();
+            closeCartModal();
+        }
     </script>
 </body>
 </html>
