@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TodoOutletVE - Moda e Tecnologia para Jovens e Adultos</title>
+    <title>TodoOutletVE - E-commerce Profissional</title>
     <style>
         :root {
             --primary: #ff6b6b;
             --secondary: #4ecdc4;
             --dark: #292f36;
             --light: #f7fff7;
+            --success: #2ecc71;
+            --warning: #f39c12;
         }
         
         * {
@@ -73,6 +75,11 @@
             font-weight: bold;
             cursor: pointer;
             position: relative;
+            transition: transform 0.3s;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.05);
         }
 
         #cart-count {
@@ -82,8 +89,8 @@
             padding: 2px 6px;
             font-size: 0.8rem;
             position: absolute;
-            top: -5px;
-            right: -5px;
+            top: -8px;
+            right: -8px;
             min-width: 18px;
             text-align: center;
         }
@@ -122,6 +129,10 @@
             display: inline-block;
         }
 
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
         .products-section {
             max-width: 1200px;
             margin: 3rem auto;
@@ -146,11 +157,12 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
         .product-image {
@@ -208,78 +220,174 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
         }
 
         .modal-content {
             background-color: white;
-            margin: 5% auto;
+            margin: 2% auto;
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: 15px;
             width: 90%;
-            max-width: 500px;
-            max-height: 80vh;
+            max-width: 600px;
+            max-height: 90vh;
             overflow-y: auto;
             position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
         .close {
             position: absolute;
-            right: 1rem;
-            top: 1rem;
-            font-size: 1.5rem;
+            right: 1.5rem;
+            top: 1.5rem;
+            font-size: 2rem;
             cursor: pointer;
             color: #666;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: var(--primary);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            text-align: center;
         }
 
         .customer-form {
             margin-top: 1rem;
         }
 
+        .form-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .form-section-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
         .form-group {
             margin-bottom: 1rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
+            color: var(--dark);
         }
 
-        .form-group input {
+        .form-group input, .form-group select {
             width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
             font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
         }
 
         .checkout-btn {
             width: 100%;
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--success), #27ae60);
             color: white;
             border: none;
-            padding: 1rem;
-            border-radius: 5px;
+            padding: 1.2rem;
+            border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
             margin-top: 1rem;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cart-summary {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
         }
 
         .cart-item {
             display: flex;
             justify-content: space-between;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
         }
 
         .cart-total {
             text-align: right;
+            font-size: 1.3rem;
             font-weight: bold;
-            margin: 1rem 0;
-            font-size: 1.2rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #ddd;
         }
 
         .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .payment-method {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            border-color: var(--primary);
+        }
+
+        .payment-method.selected {
+            border-color: var(--primary);
+            background: rgba(255, 107, 107, 0.05);
+        }
+
+        .payment-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-methods-section {
             background: white;
             padding: 3rem 0;
             text-align: center;
@@ -300,11 +408,6 @@
             background: #f8f9fa;
             border: 2px solid #e9ecef;
             text-align: center;
-        }
-
-        .payment-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
         }
 
         .social-links {
@@ -355,6 +458,41 @@
             .products-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 1.5rem;
+                margin: 5% auto;
+                width: 95%;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -387,9 +525,9 @@
                 <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3" alt="Fones de Ouvido" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">Fones de Ouvido Sem Fio</h3>
-                    <p class="product-description">Fones Bluetooth com cancelamento de ruído</p>
+                    <p class="product-description">Fones Bluetooth com cancelamento de ruído e bateria de longa duração</p>
                     <p class="product-price">R$ 189,90</p>
-                    <button class="add-to-cart" onclick="addToCart('Fones de Ouvido Sem Fio', 189.90)">Adicionar ao Carrinho</button>
+                    <button class="add-to-cart" onclick="addToCart('Fones de Ouvido Sem Fio', 189.90, 1)">Adicionar ao Carrinho</button>
                 </div>
             </div>
 
@@ -397,9 +535,9 @@
                 <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3" alt="Smartwatch" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">Smartwatch Esportivo</h3>
-                    <p class="product-description">Relógio inteligente com monitor de saúde</p>
+                    <p class="product-description">Relógio inteligente com monitor de saúde, GPS e notificações</p>
                     <p class="product-price">R$ 349,90</p>
-                    <button class="add-to-cart" onclick="addToCart('Smartwatch Esportivo', 349.90)">Adicionar ao Carrinho</button>
+                    <button class="add-to-cart" onclick="addToCart('Smartwatch Esportivo', 349.90, 2)">Adicionar ao Carrinho</button>
                 </div>
             </div>
 
@@ -407,9 +545,9 @@
                 <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3" alt="Mochila" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">Mochila Urbana</h3>
-                    <p class="product-description">Mochila moderna para uso diário</p>
+                    <p class="product-description">Mochila moderna para uso diário com múltiplos compartimentos</p>
                     <p class="product-price">R$ 129,90</p>
-                    <button class="add-to-cart" onclick="addToCart('Mochila Urbana', 129.90)">Adicionar ao Carrinho</button>
+                    <button class="add-to-cart" onclick="addToCart('Mochila Urbana', 129.90, 3)">Adicionar ao Carrinho</button>
                 </div>
             </div>
 
@@ -417,46 +555,122 @@
                 <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3" alt="Tenis" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">Tenis Esportivo</h3>
-                    <p class="product-description">Tênis confortável para atividades físicas</p>
+                    <p class="product-description">Tênis confortável para atividades físicas com design moderno</p>
                     <p class="product-price">R$ 279,90</p>
-                    <button class="add-to-cart" onclick="addToCart('Tenis Esportivo', 279.90)">Adicionar ao Carrinho</button>
+                    <button class="add-to-cart" onclick="addToCart('Tenis Esportivo', 279.90, 4)">Adicionar ao Carrinho</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Cart Modal -->
+    <!-- Cart & Registration Modal -->
     <div id="cart-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeCartModal()">&times;</span>
-            <h2>Seu Carrinho</h2>
-            <div id="cart-items"></div>
-            <div class="cart-total" id="cart-total">Total: R$ 0.00</div>
+            <h2 class="modal-title">Finalizar Compra</h2>
             
-            <div class="customer-form">
-                <h3>Dados para Entrega</h3>
-                <div class="form-group">
-                    <label for="customer-name">Nome Completo:</label>
-                    <input type="text" id="customer-name" placeholder="Seu nome completo">
+            <!-- Cart Summary -->
+            <div class="cart-summary">
+                <h3 style="margin-bottom: 1rem;">📦 Seu Carrinho</h3>
+                <div id="cart-items"></div>
+                <div class="cart-total">
+                    Total: R$ <span id="cart-total">0.00</span>
                 </div>
-                <div class="form-group">
-                    <label for="customer-address">Endereço:</label>
-                    <input type="text" id="customer-address" placeholder="Rua, número, bairro">
+            </div>
+
+            <!-- Customer Registration Form -->
+            <form id="customer-form">
+                <div class="form-section">
+                    <h3 class="form-section-title">👤 Dados Pessoais</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="customer-name">Nome Completo *</label>
+                            <input type="text" id="customer-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-cpf">CPF *</label>
+                            <input type="text" id="customer-cpf" placeholder="000.000.000-00" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-email">E-mail *</label>
+                            <input type="email" id="customer-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-phone">Telefone *</label>
+                            <input type="tel" id="customer-phone" placeholder="(41) 99999-9999" required>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="customer-cep">CEP:</label>
-                    <input type="text" id="customer-cep" placeholder="00000-000">
+
+                <div class="form-section">
+                    <h3 class="form-section-title">🏠 Endereço de Entrega</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="customer-cep">CEP *</label>
+                            <input type="text" id="customer-cep" placeholder="00000-000" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="customer-address">Endereço Completo *</label>
+                            <input type="text" id="customer-address" placeholder="Rua, número, bairro" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-complement">Complemento</label>
+                            <input type="text" id="customer-complement" placeholder="Apto, bloco, etc.">
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-city">Cidade *</label>
+                            <input type="text" id="customer-city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-state">Estado *</label>
+                            <select id="customer-state" required>
+                                <option value="">Selecione</option>
+                                <option value="PR">Paraná</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="customer-phone">Telefone:</label>
-                    <input type="tel" id="customer-phone" placeholder="(41) 99999-9999">
+
+                <div class="form-section">
+                    <h3 class="form-section-title">💳 Método de Pagamento</h3>
+                    <div class="payment-methods">
+                        <div class="payment-method" onclick="selectPayment('pix')">
+                            <div class="payment-icon">💰</div>
+                            <div>PIX</div>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment('credit')">
+                            <div class="payment-icon">💳</div>
+                            <div>Cartão de Crédito</div>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment('debit')">
+                            <div class="payment-icon">🏦</div>
+                            <div>Cartão de Débito</div>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment('boleto')">
+                            <div class="payment-icon">📄</div>
+                            <div>Boleto</div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="selected-payment" required>
                 </div>
-                <button class="checkout-btn" onclick="sendWhatsAppOrder()">Finalizar Pedido via WhatsApp</button>
+
+                <button type="button" class="checkout-btn" onclick="processOrder()">
+                    ✅ Finalizar Pedido
+                </button>
+            </form>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Processando seu pedido...</p>
             </div>
         </div>
     </div>
 
-    <section class="payment-methods" id="pagamentos">
+    <section class="payment-methods-section" id="pagamentos">
         <h2 class="section-title">Formas de Pagamento</h2>
         <div class="payment-grid">
             <div class="payment-card">
@@ -510,13 +724,43 @@
     </footer>
 
     <script>
-        // Sistema de Carrinho Mejorado
+        // SISTEMA COMPLETO DE E-COMMERCE
         let cart = [];
+        let selectedPayment = '';
+        let inventory = {
+            1: { name: 'Fones de Ouvido Sem Fio', price: 189.90, stock: 10 },
+            2: { name: 'Smartwatch Esportivo', price: 349.90, stock: 5 },
+            3: { name: 'Mochila Urbana', price: 129.90, stock: 8 },
+            4: { name: 'Tenis Esportivo', price: 279.90, stock: 6 }
+        };
 
-        function addToCart(productName, productPrice) {
-            cart.push({ name: productName, price: productPrice });
+        function addToCart(productName, productPrice, productId) {
+            // Verificar stock
+            if (inventory[productId].stock <= 0) {
+                alert('Produto esgotado!');
+                return;
+            }
+
+            cart.push({ 
+                id: productId,
+                name: productName, 
+                price: productPrice
+            });
+            
+            // Actualizar inventario
+            inventory[productId].stock--;
+            
             updateCartCount();
             showCartModal();
+            
+            // Feedback visual
+            event.target.textContent = 'Adicionado! ✓';
+            event.target.style.background = '#2ecc71';
+            
+            setTimeout(() => {
+                event.target.textContent = 'Adicionar ao Carrinho';
+                event.target.style.background = '';
+            }, 2000);
         }
 
         function updateCartCount() {
@@ -531,17 +775,21 @@
             cartItems.innerHTML = '';
             let total = 0;
             
-            cart.forEach(item => {
-                total += item.price;
-                cartItems.innerHTML += `
-                    <div class="cart-item">
-                        <span>${item.name}</span>
-                        <span>R$ ${item.price.toFixed(2)}</span>
-                    </div>
-                `;
-            });
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Seu carrinho está vazio</p>';
+            } else {
+                cart.forEach(item => {
+                    total += item.price;
+                    cartItems.innerHTML += `
+                        <div class="cart-item">
+                            <span>${item.name}</span>
+                            <span>R$ ${item.price.toFixed(2)}</span>
+                        </div>
+                    `;
+                });
+            }
             
-            cartTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
+            cartTotal.textContent = total.toFixed(2);
             modal.style.display = 'block';
         }
 
@@ -549,44 +797,112 @@
             document.getElementById('cart-modal').style.display = 'none';
         }
 
-        function sendWhatsAppOrder() {
-            let customerName = document.getElementById('customer-name').value;
-            let customerAddress = document.getElementById('customer-address').value;
-            let customerCEP = document.getElementById('customer-cep').value;
-            let customerPhone = document.getElementById('customer-phone').value;
+        function selectPayment(method) {
+            selectedPayment = method;
+            document.getElementById('selected-payment').value = method;
             
-            if (!customerName || !customerAddress || !customerCEP || !customerPhone) {
-                alert('Por favor, complete todos os dados de entrega!');
+            // Update UI
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+        }
+
+        function processOrder() {
+            const form = document.getElementById('customer-form');
+            const loading = document.getElementById('loading');
+            
+            // Validaciones
+            if (cart.length === 0) {
+                alert('Seu carrinho está vazio!');
                 return;
             }
             
-            let message = `🛒 *PEDIDO - TodoOutletVE* 🛒\n\n`;
-            message += `*Cliente:* ${customerName}\n`;
-            message += `*Endereço:* ${customerAddress}\n`;
-            message += `*CEP:* ${customerCEP}\n`;
-            message += `*Telefone:* ${customerPhone}\n\n`;
-            message += `*Produtos:*\n`;
+            if (!selectedPayment) {
+                alert('Por favor, selecione um método de pagamento!');
+                return;
+            }
             
-            let total = 0;
-            cart.forEach(item => {
+            if (!form.checkValidity()) {
+                alert('Por favor, preencha todos os campos obrigatórios!');
+                return;
+            }
+
+            // Mostrar loading
+            loading.style.display = 'block';
+            
+            // Simular procesamiento
+            setTimeout(() => {
+                const orderData = {
+                    customer: {
+                        name: document.getElementById('customer-name').value,
+                        cpf: document.getElementById('customer-cpf').value,
+                        email: document.getElementById('customer-email').value,
+                        phone: document.getElementById('customer-phone').value,
+                        address: {
+                            cep: document.getElementById('customer-cep').value,
+                            street: document.getElementById('customer-address').value,
+                            complement: document.getElementById('customer-complement').value,
+                            city: document.getElementById('customer-city').value,
+                            state: document.getElementById('customer-state').value
+                        }
+                    },
+                    products: cart,
+                    total: cart.reduce((sum, item) => sum + item.price, 0),
+                    payment: selectedPayment,
+                    orderId: 'ORD' + Date.now(),
+                    date: new Date().toLocaleString('pt-BR')
+                };
+                
+                // Enviar por WhatsApp
+                sendWhatsAppOrder(orderData);
+                
+                // Resetear
+                loading.style.display = 'none';
+                cart = [];
+                updateCartCount();
+                form.reset();
+                closeCartModal();
+                
+            }, 2000);
+        }
+
+        function sendWhatsAppOrder(orderData) {
+            let message = `🛒 *PEDIDO - TodoOutletVE* 🛒\n\n`;
+            message += `*Nº do Pedido:* ${orderData.orderId}\n`;
+            message += `*Data:* ${orderData.date}\n\n`;
+            
+            message += `*👤 DADOS DO CLIENTE:*\n`;
+            message += `Nome: ${orderData.customer.name}\n`;
+            message += `CPF: ${orderData.customer.cpf}\n`;
+            message += `Email: ${orderData.customer.email}\n`;
+            message += `Telefone: ${orderData.customer.phone}\n\n`;
+            
+            message += `*🏠 ENDEREÇO DE ENTREGA:*\n`;
+            message += `CEP: ${orderData.customer.address.cep}\n`;
+            message += `Endereço: ${orderData.customer.address.street}\n`;
+            if (orderData.customer.address.complement) {
+                message += `Complemento: ${orderData.customer.address.complement}\n`;
+            }
+            message += `Cidade: ${orderData.customer.address.city}\n`;
+            message += `Estado: ${orderData.customer.address.state}\n\n`;
+            
+            message += `*📦 PRODUTOS:*\n`;
+            orderData.products.forEach(item => {
                 message += `• ${item.name} - R$ ${item.price.toFixed(2)}\n`;
-                total += item.price;
             });
             
-            message += `\n*Total: R$ ${total.toFixed(2)}*`;
-            message += `\n\n_*Métodos de pagamento disponíveis:*_\n`;
-            message += `💰 PIX: 08185140944\n`;
-            message += `💳 Cartão de Crédito (até 12x)\n`;
-            message += `🏦 Transferência Bancária`;
+            message += `\n*💰 TOTAL: R$ ${orderData.total.toFixed(2)}*\n\n`;
+            message += `*💳 MÉTODO DE PAGAMENTO:* ${orderData.payment.toUpperCase()}\n\n`;
             
+            message += `_*Informações de pagamento:*_\n`;
+            message += `💰 PIX: 08185140944\n`;
+            message += `🏦 Banco: CAIXA ECONÔMICA FEDERAL\n`;
+            message += `📧 Email para confirmação: todooutletve@gmail.com`;
+
             const phone = "5541996347646";
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/${phone}?text=${encodedMessage}`, '_blank');
-            
-            // Resetear carrito
-            cart = [];
-            updateCartCount();
-            closeCartModal();
         }
 
         // Cerrar modal al hacer clic fuera
@@ -609,6 +925,14 @@
                     });
                 }
             });
+        });
+
+        // Auto-completar CEP (ejemplo básico)
+        document.getElementById('customer-cep').addEventListener('blur', function() {
+            if (this.value.length === 8) {
+                // Aquí integrarías con la API de Correios o ViaCEP
+                console.log('Buscando endereço para CEP:', this.value);
+            }
         });
     </script>
 </body>
