@@ -3,184 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TodoOutletVE - Moda e Tecnologia para Jovens e Adultos</title>
+    <title>TodoOutletVE - Moda e Tecnologia</title>
     <style>
-        :root {
-            --primary: #ff6b6b;
-            --secondary: #4ecdc4;
-            --dark: #292f36;
-            --light: #f7fff7;
-        }
-        
+        /* Estilos generales actualizados */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
             color: #333;
         }
 
-        .header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            color: white;
-            text-decoration: none;
-        }
-
-        .logo:hover {
-            opacity: 0.8;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
         }
 
         .cart-icon {
-            background: white;
-            color: var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: bold;
+            position: relative;
             cursor: pointer;
+            font-size: 1.5rem;
         }
 
-        .payment-methods {
-            background: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        .payment-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            padding: 0 20px;
-        }
-
-        .payment-card {
-            padding: 2rem;
-            border-radius: 10px;
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            text-align: center;
-        }
-
-        .payment-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .pix-code {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 5px;
-            border: 1px dashed #6c757d;
-            margin: 1rem 0;
-            font-family: monospace;
-            font-size: 1.1rem;
-        }
-
-        .copy-btn {
-            background: var(--primary);
+        #cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff4444;
             color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 0.5rem;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.8rem;
         }
 
+        /* Hero Section */
         .hero {
-            margin-top: 80px;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3');
             background-size: cover;
             background-position: center;
-            color: white;
-            padding: 6rem 2rem;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            color: white;
+            margin-top: 80px;
         }
 
-        .hero h1 {
+        .hero-content h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
         .cta-button {
-            background: var(--primary);
+            display: inline-block;
+            background: #667eea;
             color: white;
-            padding: 1rem 2rem;
-            border: none;
+            padding: 12px 30px;
+            text-decoration: none;
             border-radius: 5px;
-            font-size: 1.1rem;
             font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s;
+            transition: background 0.3s;
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
+            background: #764ba2;
         }
 
-        .products-section {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 20px;
+        /* Productos Destacados */
+        .featured-products {
+            padding: 4rem 0;
+            background: #f8f9fa;
         }
 
         .section-title {
             text-align: center;
+            font-size: 2.5rem;
             margin-bottom: 3rem;
-            color: var(--dark);
+            color: #333;
         }
 
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
+            padding: 0 1rem;
         }
 
         .product-card {
@@ -188,21 +122,18 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
         .product-image {
             width: 100%;
             height: 200px;
-            background: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
+            object-fit: cover;
         }
 
         .product-info {
@@ -210,315 +141,235 @@
         }
 
         .product-title {
-            font-weight: 600;
+            font-size: 1.2rem;
+            font-weight: bold;
             margin-bottom: 0.5rem;
         }
 
         .product-price {
-            color: var(--primary);
+            font-size: 1.3rem;
+            color: #667eea;
             font-weight: bold;
-            font-size: 1.2rem;
             margin-bottom: 1rem;
         }
 
-        .add-to-cart {
-            background: var(--secondary);
+        .add-to-cart-btn {
+            width: 100%;
+            background: #667eea;
             color: white;
             border: none;
-            padding: 0.8rem 1.5rem;
+            padding: 12px;
             border-radius: 5px;
-            width: 100%;
+            font-weight: bold;
             cursor: pointer;
-            font-weight: 600;
+            transition: background 0.3s;
         }
 
-        .social-links {
+        .add-to-cart-btn:hover {
+            background: #764ba2;
+        }
+
+        /* Modal del Carrito */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-item {
             display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
         }
 
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--dark);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: transform 0.3s;
+        .customer-form {
+            margin-top: 1rem;
         }
 
-        .social-icon:hover {
-            transform: scale(1.1);
-        }
-
-        .footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 0;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 0 20px;
-        }
-
-        .footer-section h3 {
+        .form-group {
             margin-bottom: 1rem;
         }
 
-        .footer-section a {
-            color: #ccc;
-            text-decoration: none;
+        .form-group label {
             display: block;
             margin-bottom: 0.5rem;
+            font-weight: bold;
         }
 
-        .footer-section a:hover {
-            color: white;
-        }
-
-        .qr-section {
-            text-align: center;
-            margin: 2rem 0;
-            padding: 2rem 0;
-            background: #f8f9fa;
-        }
-
-        .qr-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .qr-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .qr-image {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 1rem;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .qr-image img {
+        .form-group input {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="nav-container">
-            <a href="#" class="logo">TodoOutletVE</a>
-            <ul class="nav-links">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#produtos">Produtos</a></li>
-                <li><a href="#pagamentos">Pagamentos</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-            <div class="cart-icon">🛒 Carrinho (0)</div>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">TodoOutletVE</div>
+            <div class="cart-icon" onclick="showCartModal()">
+                🛒 <span id="cart-count">0</span>
+            </div>
         </div>
     </header>
 
-    <section class="hero" id="inicio">
-        <h1>Moda e Tecnologia para Jovens e Adultos</h1>
-        <p>Os produtos mais procurados com os melhores preços do Brasil</p>
-        <button class="cta-button">Ver Ofertas da Semana</button>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Moda e Tecnologia para Jovens e Adultos</h1>
+            <p>Os produtos mais procurados com os melhores preços do Brasil</p>
+            <a href="#featured-products" class="cta-button">Ver Ofertas da Semana</a>
+        </div>
     </section>
 
-    <section class="products-section" id="produtos">
-        <h2 class="section-title">Produtos em Destaque</h2>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-image">[Foto do Produto]</div>
-                <div class="product-info">
-                    <h3 class="product-title">Fones de Ouvido Sem Fio</h3>
-                    <p class="product-price">R$ 189,90</p>
-                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+    <!-- Productos Destacados -->
+    <section id="featured-products" class="featured-products">
+        <div class="container">
+            <h2 class="section-title">Produtos em Destaque</h2>
+            <div class="products-grid">
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3" alt="Smartwatch" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Smartwatch Pro</h3>
+                        <p class="product-description">Relógio inteligente com monitor de saúde</p>
+                        <div class="product-price">R$ 299,99</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Smartwatch Pro', 299.99)">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="product-card">
-                <div class="product-image">[Foto do Produto]</div>
-                <div class="product-info">
-                    <h3 class="product-title">Smartwatch Esportivo</h3>
-                    <p class="product-price">R$ 349,90</p>
-                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?ixlib=rb-4.0.3" alt="Tênis" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Tênis Esportivo</h3>
+                        <p class="product-description">Tênis confortável para atividades físicas</p>
+                        <div class="product-price">R$ 189,99</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Tênis Esportivo', 189.99)">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="product-card">
-                <div class="product-image">[Foto do Produto]</div>
-                <div class="product-info">
-                    <h3 class="product-title">Mochila Urbana</h3>
-                    <p class="product-price">R$ 129,90</p>
-                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3" alt="Bolsa" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Bolsa Feminina</h3>
+                        <p class="product-description">Bolsa elegante para o dia a dia</p>
+                        <div class="product-price">R$ 159,99</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Bolsa Feminina', 159.99)">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="product-card">
-                <div class="product-image">[Foto do Produto]</div>
-                <div class="product-info">
-                    <h3 class="product-title">Tenis Esportivo</h3>
-                    <p class="product-price">R$ 279,90</p>
-                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                <!-- Producto 4 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3" alt="Fones" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Fones de Ouvido</h3>
+                        <p class="product-description">Fones Bluetooth com cancelamento de ruído</p>
+                        <div class="product-price">R$ 229,99</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Fones de Ouvido Bluetooth', 229.99)">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="qr-section">
-        <h2 class="section-title">Escaneie e Converse Conosco</h2>
-        <div class="qr-grid">
-            <div class="qr-card">
-                <h3>📱 WhatsApp</h3>
-                <div class="qr-image">
-                    <img src="whatsapp-qr.png" alt="QR WhatsApp">
-                </div>
-                <p>Escaneie para conversar no WhatsApp</p>
-            </div>
-            <div class="qr-card">
-                <h3>💰 PIX</h3>
-                <div class="qr-image">
-                    <img src="pix-qr.png" alt="QR PIX">
-                </div>
-                <p>Escaneie para pagar com PIX</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="payment-methods" id="pagamentos">
-        <h2 class="section-title">Formas de Pagamento</h2>
-        <div class="payment-grid">
-            <div class="payment-card">
-                <div class="payment-icon">💰</div>
-                <h3>PIX</h3>
-                <p>Pagamento instantâneo</p>
-                <div class="pix-code" id="pixCode">08185140944</div>
-                <button class="copy-btn" onclick="copyPixCode()">Copiar Chave PIX</button>
+    <!-- Modal del Carrito -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCartModal()">&times;</span>
+            <h2>Seu Carrinho</h2>
+            <div id="cart-items"></div>
+            <div style="text-align: right; margin: 1rem 0;">
+                <strong>Total: R$ <span id="cart-total">0.00</span></strong>
             </div>
             
-            <div class="payment-card">
-                <div class="payment-icon">🏦</div>
-                <h3>Transferência Bancária</h3>
-                <p>Banco CAIXA ECONÔMICA FEDERAL</p>
-                <p>Chave PIX: 08185140944</p>
-            </div>
-            
-            <div class="payment-card">
-                <div class="payment-icon">₿</div>
-                <h3>Criptomoedas</h3>
-                <p>Aceitamos Bitcoin e outras criptomoedas</p>
-                <p><em>Consultar valores via WhatsApp</em></p>
+            <div class="customer-form">
+                <h3>Dados de Entrega</h3>
+                <div class="form-group">
+                    <label for="customer-name">Nome Completo:</label>
+                    <input type="text" id="customer-name" placeholder="Seu nome completo">
+                </div>
+                <div class="form-group">
+                    <label for="customer-address">Endereço Completo:</label>
+                    <input type="text" id="customer-address" placeholder="Rua, número, bairro">
+                </div>
+                <div class="form-group">
+                    <label for="customer-cep">CEP:</label>
+                    <input type="text" id="customer-cep" placeholder="00000-000">
+                </div>
+                <button class="checkout-btn" onclick="sendWhatsAppOrder()">
+                    Finalizar Pedido via WhatsApp
+                </button>
             </div>
         </div>
-    </section>
-
-    <div class="social-links">
-        <a href="https://x.com/TodoOuletVE" class="social-icon" target="_blank">X</a>
-        <a href="https://tiktok.com/@TodoOuletVE" class="social-icon" target="_blank">TT</a>
-        <a href="https://instagram.com/TodoOuletVE" class="social-icon" target="_blank">IG</a>
-        <a href="https://facebook.com/" class="social-icon" target="_blank">FB</a>
     </div>
 
-    <footer class="footer" id="contato">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>TodoOutletVE</h3>
-                <p>Os melhores produtos para jovens e adultos desde 2024</p>
-            </div>
-            <div class="footer-section">
-                <h3>Links Rápidos</h3>
-                <a href="#inicio">Início</a>
-                <a href="#produtos">Produtos</a>
-                <a href="#pagamentos">Pagamentos</a>
-                <a href="#contato">Contato</a>
-            </div>
-            <div class="footer-section">
-                <h3>Contato & Pagamentos</h3>
-                <a href="https://wa.me/5541996347646" target="_blank">📱 WhatsApp: (41) 99634-7646</a>
-                <a href="mailto:todooutletve@gmail.com">📧 todooutletve@gmail.com</a>
-                <a href="#">📍 Rua Visconde do Rio Branco, 1189<br>Curitiba, PR - CEP 80410-001</a>
-                <a href="#">🏦 CAIXA ECONÔMICA FEDERAL</a>
-                <a href="#">💰 PIX: 08185140944</a>
-            </div>
-        </div>
-    </footer>
-
     <script>
-        let cartCount = 0;
-        const cartButtons = document.querySelectorAll('.add-to-cart');
-        const cartIcon = document.querySelector('.cart-icon');
-        
-        cartButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                cartCount++;
-                cartIcon.textContent = `🛒 Carrinho (${cartCount})`;
-                
-                this.textContent = 'Adicionado!';
-                this.style.background = '#2ecc71';
-                
-                setTimeout(() => {
-                    this.textContent = 'Adicionar ao Carrinho';
-                    this.style.background = '';
-                }, 2000);
-            });
-        });
-
-        function copyPixCode() {
-            const pixCode = document.getElementById('pixCode');
-            const textArea = document.createElement('textarea');
-            textArea.value = pixCode.textContent;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            
-            alert('Chave PIX copiada para a área de transferência!');
-        }
-
-        cartIcon.addEventListener('click', function() {
-            if (cartCount > 0) {
-                const message = `Olá! Gostaria de comprar ${cartCount} produto(s) do TodoOutletVE. Pode me enviar as informações de pagamento?`;
-                const whatsappURL = `https://wa.me/5541996347646?text=${encodeURIComponent(message)}`;
-                window.open(whatsappURL, '_blank');
-            }
-        });
-
-        // Navegação suave para as seções
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+        // Aquí va el código JavaScript del carrito que te envié arriba
+        // Copia y pega el código JavaScript completo aquí
     </script>
 </body>
 </html>
