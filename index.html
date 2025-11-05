@@ -14,6 +14,7 @@
             --accent: #ff9900;
             --gray-light: #eaeded;
             --gray-dark: #131a22;
+            --shein-pink: #ff2f87;
         }
         
         * {
@@ -120,6 +121,7 @@
             margin-left: 1rem;
             padding: 0.5rem;
             cursor: pointer;
+            position: relative;
         }
 
         .nav-item:hover {
@@ -144,6 +146,39 @@
             color: var(--accent);
             font-weight: bold;
             margin-left: 0.2rem;
+        }
+
+        .user-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            color: #333;
+            width: 200px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border-radius: 4px;
+            z-index: 100;
+        }
+
+        .user-dropdown.active {
+            display: block;
+        }
+
+        .user-dropdown a {
+            display: block;
+            padding: 0.8rem 1rem;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #eee;
+        }
+
+        .user-dropdown a:hover {
+            background: #f5f5f5;
+        }
+
+        .user-dropdown a:last-child {
+            border-bottom: none;
         }
 
         .navbar-bottom {
@@ -258,6 +293,49 @@
         .sidebar-links a:hover {
             text-decoration: underline;
             color: #c45500;
+        }
+
+        /* Promo Section */
+        .promo-section {
+            background: white;
+            border-radius: 4px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .promo-card {
+            background: linear-gradient(135deg, var(--shein-pink), #ff6b9d);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .promo-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .promo-card p {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .promo-card.small {
+            padding: 1rem;
+        }
+
+        .promo-card.small h3 {
+            font-size: 1.2rem;
         }
 
         /* Products Section */
@@ -476,6 +554,31 @@
             background: #e68900;
         }
 
+        .google-btn {
+            background: white;
+            color: #333;
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .google-btn:hover {
+            background: #f5f5f5;
+        }
+
+        .google-btn i {
+            margin-right: 0.5rem;
+            color: #4285f4;
+        }
+
         .form-footer {
             text-align: center;
             margin-top: 1rem;
@@ -607,6 +710,12 @@
                         <p>Olá, faça login</p>
                         <p>Conta e Listas</p>
                     </div>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="#">Minha conta</a>
+                        <a href="#">Meus pedidos</a>
+                        <a href="#">Minhas listas</a>
+                        <a href="#" id="logout-btn">Sair</a>
+                    </div>
                 </div>
                 
                 <div class="nav-item">
@@ -648,34 +757,56 @@
             <!-- Sidebar -->
             <aside class="sidebar">
                 <div class="sidebar-section">
-                    <h3>Departamentos</h3>
+                    <h3>Categorias</h3>
                     <ul class="sidebar-links">
-                        <li><a href="#">Moda Masculina</a></li>
-                        <li><a href="#">Moda Feminina</a></li>
-                        <li><a href="#">Eletrônicos</a></li>
-                        <li><a href="#">Computadores</a></li>
-                        <li><a href="#">Smartphones</a></li>
-                        <li><a href="#">Casa e Cozinha</a></li>
-                        <li><a href="#">Esportes</a></li>
-                        <li><a href="#">Beleza</a></li>
-                        <li><a href="#">Livros</a></li>
-                        <li><a href="#">Ver todos</a></li>
+                        <li><a href="#">Só para você</a></li>
+                        <li><a href="#">Novo em</a></li>
+                        <li><a href="#">Envio nacional</a></li>
+                        <li><a href="#">Promoção</a></li>
                     </ul>
                 </div>
                 
                 <div class="sidebar-section">
-                    <h3>Mais Vendidos</h3>
+                    <h3>Mais Vendido</h3>
                     <ul class="sidebar-links">
-                        <li><a href="#">Fones de Ouvido</a></li>
-                        <li><a href="#">Smartwatches</a></li>
-                        <li><a href="#">Mochilas</a></li>
-                        <li><a href="#">Tênis Esportivos</a></li>
+                        <li><a href="#">Envio Nacional</a></li>
+                        <li><a href="#">Camisetas mais vendidas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Ofertas Especiais</h3>
+                    <ul class="sidebar-links">
+                        <li><a href="#">25% OFF - Padrões R$89+</a></li>
+                        <li><a href="#">R$20 off - Padrões R$89+</a></li>
+                        <li><a href="#">Salvar cupons</a></li>
                     </ul>
                 </div>
             </aside>
 
             <!-- Main Content Area -->
             <main>
+                <!-- Promo Section -->
+                <section class="promo-section">
+                    <h2 class="section-title">Ofertas Especiais</h2>
+                    <div class="promo-grid">
+                        <div class="promo-card">
+                            <h3>25% OFF</h3>
+                            <p>Padrões R$89+</p>
+                            <small>Cupom válido para todo o site</small>
+                        </div>
+                        <div class="promo-card">
+                            <h3>R$20 OFF</h3>
+                            <p>Padrões R$89+</p>
+                            <small>Por tempo limitado</small>
+                        </div>
+                        <div class="promo-card small">
+                            <h3>Salvar Cupons</h3>
+                            <p>Cupom confirmados após a batalha</p>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Continue Shopping Section -->
                 <section class="continue-shopping">
                     <div class="section-header">
@@ -854,6 +985,9 @@
                     <input type="password" id="login-password" class="form-control" required>
                 </div>
                 <button type="submit" class="submit-btn">Continuar</button>
+                <button type="button" class="google-btn" id="google-login">
+                    <i class="fab fa-google"></i> Fazer login com Google
+                </button>
                 <div class="form-footer">
                     <p>Ao continuar, você concorda com as <a href="#">Condições de Uso</a> e a <a href="#">Política de Privacidade</a> da TodoOutletVE.</p>
                     <p><a href="#" id="show-register">Não tem uma conta? Cadastre-se</a></p>
@@ -887,6 +1021,9 @@
                     <input type="password" id="register-password-confirm" class="form-control" required>
                 </div>
                 <button type="submit" class="submit-btn">Criar sua conta da TodoOutletVE</button>
+                <button type="button" class="google-btn" id="google-register">
+                    <i class="fab fa-google"></i> Cadastrar com Google
+                </button>
                 <div class="form-footer">
                     <p>Ao criar uma conta, você concorda com as <a href="#">Condições de Uso</a> e a <a href="#">Política de Privacidade</a> da TodoOutletVE.</p>
                     <p><a href="#" id="show-login">Já tem uma conta? Fazer login</a></p>
@@ -901,6 +1038,7 @@
         const loginPrompt = document.getElementById('login-prompt');
         const userGreeting = document.getElementById('user-greeting');
         const userName = document.getElementById('user-name');
+        const userDropdown = document.getElementById('user-dropdown');
         const loginModal = document.getElementById('login-modal');
         const registerModal = document.getElementById('register-modal');
         const closeModalButtons = document.querySelectorAll('.close-modal');
@@ -908,6 +1046,9 @@
         const showLogin = document.getElementById('show-login');
         const loginForm = document.getElementById('login-form');
         const registerForm = document.getElementById('register-form');
+        const googleLogin = document.getElementById('google-login');
+        const googleRegister = document.getElementById('google-register');
+        const logoutBtn = document.getElementById('logout-btn');
         const cartCount = document.getElementById('cart-count');
         const addToCartButtons = document.querySelectorAll('.add-to-cart');
         const cartIcon = document.getElementById('cart-icon');
@@ -918,11 +1059,13 @@
         let cartItems = 0;
 
         // Event Listeners
-        userMenu.addEventListener('click', function() {
+        userMenu.addEventListener('click', function(e) {
             if (!isLoggedIn) {
                 loginModal.style.display = 'flex';
+            } else {
+                // Toggle dropdown
+                userDropdown.classList.toggle('active');
             }
-            // If logged in, could show a dropdown with account options
         });
 
         closeModalButtons.forEach(button => {
@@ -943,6 +1086,34 @@
             registerModal.style.display = 'none';
             loginModal.style.display = 'flex';
         });
+
+        // Login with Google
+        googleLogin.addEventListener('click', function() {
+            loginWithGoogle();
+        });
+
+        googleRegister.addEventListener('click', function() {
+            loginWithGoogle();
+        });
+
+        // Login with Google function
+        function loginWithGoogle() {
+            // Simulate Google login
+            isLoggedIn = true;
+            currentUser = "Usuário Google";
+            userName.textContent = currentUser;
+            
+            // Update UI
+            loginPrompt.style.display = 'none';
+            userGreeting.style.display = 'block';
+            
+            // Close modals
+            loginModal.style.display = 'none';
+            registerModal.style.display = 'none';
+            
+            // Show welcome message
+            alert(`Bem-vindo, ${currentUser}! Você fez login com sua conta Google.`);
+        }
 
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -992,6 +1163,21 @@
             alert(`Conta criada com sucesso! Bem-vindo, ${currentUser}!`);
         });
 
+        // Logout functionality
+        logoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            isLoggedIn = false;
+            currentUser = '';
+            
+            // Update UI
+            userGreeting.style.display = 'none';
+            loginPrompt.style.display = 'block';
+            userDropdown.classList.remove('active');
+            
+            // Show logout message
+            alert('Você saiu da sua conta com sucesso.');
+        });
+
         // Add to cart functionality
         addToCartButtons.forEach(button => {
             button.addEventListener('click', function() {
@@ -1026,6 +1212,11 @@
             }
             if (e.target === registerModal) {
                 registerModal.style.display = 'none';
+            }
+            
+            // Close dropdown when clicking outside
+            if (!userMenu.contains(e.target)) {
+                userDropdown.classList.remove('active');
             }
         });
     </script>
