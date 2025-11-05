@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TodoOutletVE - Moda e Tecnologia para Jovens e Adultos</title>
+    <title>TodoOutletVE - Moda e Tecnologia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #ff6b6b;
             --secondary: #4ecdc4;
             --dark: #232f3e;
-            --light: #f7fff7;
             --accent: #ff9900;
             --gray-light: #eaeded;
-            --gray-dark: #131a22;
-            --shein-pink: #ff2f87;
         }
         
         * {
@@ -30,7 +27,7 @@
             line-height: 1.6;
         }
 
-        /* Header Styles */
+        /* Header */
         .navbar {
             background-color: var(--dark);
             color: white;
@@ -66,10 +63,6 @@
             margin-left: 1rem;
         }
 
-        .delivery-location {
-            margin-left: 0.5rem;
-        }
-
         .delivery-location p:first-child {
             font-size: 0.8rem;
             color: #ccc;
@@ -87,21 +80,12 @@
             display: flex;
         }
 
-        .search-select {
-            background: #f3f3f3;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            padding: 0 0.5rem;
-            color: #555;
-            font-size: 0.8rem;
-            border-right: 1px solid #ddd;
-        }
-
         .search-input {
             flex: 1;
             padding: 0.5rem;
             border: none;
             font-size: 1rem;
+            border-radius: 4px 0 0 4px;
         }
 
         .search-button {
@@ -110,6 +94,7 @@
             border-radius: 0 4px 4px 0;
             padding: 0 1rem;
             cursor: pointer;
+            color: white;
         }
 
         .nav-right {
@@ -177,10 +162,6 @@
             background: #f5f5f5;
         }
 
-        .user-dropdown a:last-child {
-            border-bottom: none;
-        }
-
         .navbar-bottom {
             background-color: #35475a;
             padding: 0.5rem 1rem;
@@ -191,6 +172,7 @@
             list-style: none;
             max-width: 1500px;
             margin: 0 auto;
+            flex-wrap: wrap;
         }
 
         .nav-links li {
@@ -203,15 +185,9 @@
             font-size: 0.9rem;
         }
 
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), #232f3e;
             color: white;
             padding: 4rem 2rem;
             text-align: center;
@@ -237,11 +213,6 @@
             font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .cta-button:hover {
-            background: #e68900;
         }
 
         /* Main Content */
@@ -253,7 +224,7 @@
 
         .content-grid {
             display: grid;
-            grid-template-columns: 1fr 3fr;
+            grid-template-columns: 250px 1fr;
             gap: 1rem;
         }
 
@@ -262,7 +233,6 @@
             background: white;
             border-radius: 4px;
             padding: 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .sidebar-section {
@@ -290,60 +260,25 @@
             font-size: 0.9rem;
         }
 
-        .sidebar-links a:hover {
-            text-decoration: underline;
-            color: #c45500;
-        }
-
-        /* Promo Section */
-        .promo-section {
-            background: white;
-            border-radius: 4px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .promo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
         .promo-card {
-            background: linear-gradient(135deg, var(--shein-pink), #ff6b9d);
+            background: linear-gradient(135deg, #ff2f87, #ff6b9d);
             color: white;
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 8px;
             text-align: center;
+            margin-bottom: 1rem;
         }
 
         .promo-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
         }
 
-        .promo-card p {
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .promo-card.small {
-            padding: 1rem;
-        }
-
-        .promo-card.small h3 {
-            font-size: 1.2rem;
-        }
-
-        /* Products Section */
+        /* Products */
         .products-section {
             background: white;
             border-radius: 4px;
             padding: 1.5rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             margin-bottom: 1rem;
         }
 
@@ -359,17 +294,6 @@
             color: var(--dark);
         }
 
-        .see-all {
-            color: #0066c0;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .see-all:hover {
-            text-decoration: underline;
-            color: #c45500;
-        }
-
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -381,12 +305,11 @@
             border-radius: 4px;
             padding: 1rem;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .product-image {
@@ -397,20 +320,13 @@
             justify-content: center;
             margin-bottom: 1rem;
             color: #666;
+            font-size: 2rem;
         }
 
         .product-title {
             font-weight: 600;
             margin-bottom: 0.5rem;
             font-size: 0.9rem;
-            height: 2.5rem;
-            overflow: hidden;
-        }
-
-        .product-rating {
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-            font-size: 0.8rem;
         }
 
         .product-price {
@@ -429,49 +345,9 @@
             width: 100%;
             cursor: pointer;
             font-weight: 600;
-            transition: background 0.3s;
         }
 
-        .add-to-cart:hover {
-            background: #e68900;
-        }
-
-        /* Continue Shopping Section */
-        .continue-shopping {
-            background: white;
-            border-radius: 4px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 1rem;
-        }
-
-        .continue-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1rem;
-        }
-
-        .continue-item {
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .continue-image {
-            height: 100px;
-            background: #f5f5f5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 0.5rem;
-            border-radius: 4px;
-            color: #666;
-        }
-
-        .continue-title {
-            font-size: 0.9rem;
-        }
-
-        /* User Modal */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -491,7 +367,6 @@
             width: 90%;
             max-width: 400px;
             padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .modal-header {
@@ -501,27 +376,15 @@
             margin-bottom: 1.5rem;
         }
 
-        .modal-title {
-            font-size: 1.5rem;
-            color: var(--dark);
-        }
-
         .close-modal {
             background: none;
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
-            color: #666;
         }
 
         .form-group {
             margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
         }
 
         .form-control {
@@ -530,11 +393,6 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 1rem;
-        }
-
-        .form-control:focus {
-            border-color: var(--accent);
-            outline: none;
         }
 
         .submit-btn {
@@ -550,10 +408,6 @@
             margin-top: 1rem;
         }
 
-        .submit-btn:hover {
-            background: #e68900;
-        }
-
         .google-btn {
             background: white;
             color: #333;
@@ -562,7 +416,6 @@
             border-radius: 4px;
             width: 100%;
             font-size: 1rem;
-            font-weight: bold;
             cursor: pointer;
             margin-top: 1rem;
             display: flex;
@@ -570,32 +423,9 @@
             justify-content: center;
         }
 
-        .google-btn:hover {
-            background: #f5f5f5;
-        }
-
         .google-btn i {
             margin-right: 0.5rem;
             color: #4285f4;
-        }
-
-        .form-footer {
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .form-footer a {
-            color: #0066c0;
-            text-decoration: none;
-        }
-
-        .form-footer a:hover {
-            text-decoration: underline;
-        }
-
-        .user-greeting {
-            display: none;
         }
 
         /* Footer */
@@ -615,36 +445,11 @@
             padding: 0 1rem;
         }
 
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
         .footer-bottom {
             text-align: center;
             padding-top: 1rem;
             margin-top: 2rem;
             border-top: 1px solid #444;
-            font-size: 0.8rem;
-            color: #999;
         }
 
         /* Responsive */
@@ -687,13 +492,6 @@
             </div>
             
             <div class="search-bar">
-                <select class="search-select">
-                    <option>Todos</option>
-                    <option>Moda</option>
-                    <option>Tecnologia</option>
-                    <option>Eletrônicos</option>
-                    <option>Casa</option>
-                </select>
                 <input type="text" class="search-input" placeholder="Pesquisar TodoOutletVE">
                 <button class="search-button">
                     <i class="fas fa-search"></i>
@@ -702,7 +500,7 @@
             
             <div class="nav-right">
                 <div class="nav-item" id="user-menu">
-                    <div class="user-greeting" id="user-greeting">
+                    <div class="user-greeting" id="user-greeting" style="display:none;">
                         <p>Olá, <span id="user-name">Usuário</span></p>
                         <p>Conta e Listas</p>
                     </div>
@@ -713,7 +511,6 @@
                     <div class="user-dropdown" id="user-dropdown">
                         <a href="#">Minha conta</a>
                         <a href="#">Meus pedidos</a>
-                        <a href="#">Minhas listas</a>
                         <a href="#" id="logout-btn">Sair</a>
                     </div>
                 </div>
@@ -737,7 +534,6 @@
                 <li><a href="#">Serviço ao Cliente</a></li>
                 <li><a href="#">Listas</a></li>
                 <li><a href="#">Cartões Presente</a></li>
-                <li><a href="#">Venda na TodoOutletVE</a></li>
             </ul>
         </div>
     </nav>
@@ -766,149 +562,93 @@
                     </ul>
                 </div>
                 
-                <div class="sidebar-section">
-                    <h3>Mais Vendido</h3>
-                    <ul class="sidebar-links">
-                        <li><a href="#">Envio Nacional</a></li>
-                        <li><a href="#">Camisetas mais vendidas</a></li>
-                    </ul>
+                <div class="promo-card">
+                    <h3>25% OFF</h3>
+                    <p>Padrões R$89+</p>
+                    <small>Cupom válido para todo o site</small>
+                </div>
+                
+                <div class="promo-card">
+                    <h3>R$20 OFF</h3>
+                    <p>Padrões R$89+</p>
+                    <small>Por tempo limitado</small>
                 </div>
                 
                 <div class="sidebar-section">
                     <h3>Ofertas Especiais</h3>
                     <ul class="sidebar-links">
-                        <li><a href="#">25% OFF - Padrões R$89+</a></li>
-                        <li><a href="#">R$20 off - Padrões R$89+</a></li>
-                        <li><a href="#">Salvar cupons</a></li>
+                        <li><a href="#">Salvar Cupons</a></li>
+                        <li><a href="#">Cupom confirmados após a batalha</a></li>
                     </ul>
                 </div>
             </aside>
 
-            <!-- Main Content Area -->
+            <!-- Main Content -->
             <main>
-                <!-- Promo Section -->
-                <section class="promo-section">
-                    <h2 class="section-title">Ofertas Especiais</h2>
-                    <div class="promo-grid">
-                        <div class="promo-card">
-                            <h3>25% OFF</h3>
-                            <p>Padrões R$89+</p>
-                            <small>Cupom válido para todo o site</small>
-                        </div>
-                        <div class="promo-card">
-                            <h3>R$20 OFF</h3>
-                            <p>Padrões R$89+</p>
-                            <small>Por tempo limitado</small>
-                        </div>
-                        <div class="promo-card small">
-                            <h3>Salvar Cupons</h3>
-                            <p>Cupom confirmados após a batalha</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Continue Shopping Section -->
-                <section class="continue-shopping">
-                    <div class="section-header">
-                        <h2 class="section-title">Continue de onde parou</h2>
-                        <a href="#" class="see-all">Ver histórico</a>
-                    </div>
-                    <div class="continue-grid">
-                        <div class="continue-item">
-                            <div class="continue-image">Fogões</div>
-                            <div class="continue-title">Fogões cooktop</div>
-                        </div>
-                        <div class="continue-item">
-                            <div class="continue-image">Purificadores</div>
-                            <div class="continue-title">Purificadores de água</div>
-                        </div>
-                        <div class="continue-item">
-                            <div class="continue-image">Cadernos</div>
-                            <div class="continue-title">Cadernos espirais</div>
-                        </div>
-                        <div class="continue-item">
-                            <div class="continue-image">Batedeiras</div>
-                            <div class="continue-title">Batedeiras e mixers</div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Products Section -->
                 <section class="products-section">
                     <div class="section-header">
                         <h2 class="section-title">Produtos em Destaque</h2>
-                        <a href="#" class="see-all">Ver todos</a>
                     </div>
                     <div class="products-grid">
                         <div class="product-card">
-                            <div class="product-image">[Foto do Produto]</div>
+                            <div class="product-image">🎧</div>
                             <h3 class="product-title">Fones de Ouvido Sem Fio Bluetooth</h3>
-                            <div class="product-rating">★★★★★</div>
                             <div class="product-price">R$ 189,90</div>
                             <button class="add-to-cart">Adicionar ao Carrinho</button>
                         </div>
                         
                         <div class="product-card">
-                            <div class="product-image">[Foto do Produto]</div>
-                            <h3 class="product-title">Smartwatch Esportivo à Prova D'água</h3>
-                            <div class="product-rating">★★★★☆</div>
+                            <div class="product-image">⌚</div>
+                            <h3 class="product-title">Smartwatch Esportivo</h3>
                             <div class="product-price">R$ 349,90</div>
                             <button class="add-to-cart">Adicionar ao Carrinho</button>
                         </div>
                         
                         <div class="product-card">
-                            <div class="product-image">[Foto do Produto]</div>
-                            <h3 class="product-title">Mochila Urbana Antifurto 15"</h3>
-                            <div class="product-rating">★★★★★</div>
+                            <div class="product-image">🎒</div>
+                            <h3 class="product-title">Mochila Urbana Antifurto</h3>
                             <div class="product-price">R$ 129,90</div>
                             <button class="add-to-cart">Adicionar ao Carrinho</button>
                         </div>
                         
                         <div class="product-card">
-                            <div class="product-image">[Foto do Produto]</div>
-                            <h3 class="product-title">Tênis Esportivo Corrida Leve</h3>
-                            <div class="product-rating">★★★★☆</div>
+                            <div class="product-image">👟</div>
+                            <h3 class="product-title">Tênis Esportivo Corrida</h3>
                             <div class="product-price">R$ 279,90</div>
                             <button class="add-to-cart">Adicionar ao Carrinho</button>
                         </div>
                     </div>
                 </section>
 
-                <!-- More Products Section -->
                 <section class="products-section">
                     <div class="section-header">
-                        <h2 class="section-title">Ofertas Especiais</h2>
-                        <a href="#" class="see-all">Ver todas as ofertas</a>
+                        <h2 class="section-title">Mais Vendidos</h2>
                     </div>
                     <div class="products-grid">
                         <div class="product-card">
-                            <div class="product-image">[Foto do Produto]</div>
+                            <div class="product-image">📱</div>
                             <h3 class="product-title">Tablet 10" 64GB Android</h3>
-                            <div class="product-rating">★★★★☆</div>
                             <div class="product-price">R$ 599,90</div>
                             <button class="add-to-cart">Adicionar ao Carrinho</button>
                         </div>
                         
                         <div class="product-card">
-                            <div class="product-image">[Foto do Produto]</div>
-                            <h3 class="product-title">Caixa de Som Bluetooth Portátil</h3>
-                            <div class="product-rating">★★★★★</div>
+                            <div class="product-image">🔊</div>
+                            <h3 class="product-title">Caixa de Som Bluetooth</h3>
                             <div class="product-price">R$ 159,90</div>
                             <button class="add-to-cart">Adicionar ao Carrinho</button>
                         </div>
                         
                         <div class="product-card">
-                            <div class="product-image">[Foto do Produto]</div>
-                            <h3 class="product-title">Camiseta Básica Algodão - Pack 3</h3>
-                            <div class="product-rating">★★★★☆</div>
+                            <div class="product-image">👕</div>
+                            <h3 class="product-title">Camiseta Básica - Pack 3</h3>
                             <div class="product-price">R$ 89,90</div>
                             <button class="add-to-cart">Adicionar ao Carrinho</button>
                         </div>
                         
                         <div class="product-card">
-                            <div class="product-image">[Foto do Produto]</div>
+                            <div class="product-image">🍳</div>
                             <h3 class="product-title">Fritadeira Elétrica Air Fryer</h3>
-                            <div class="product-rating">★★★★★</div>
                             <div class="product-price">R$ 329,90</div>
                             <button class="add-to-cart">Adicionar ao Carrinho</button>
                         </div>
@@ -923,47 +663,25 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Conheça-nos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Sobre nós</a></li>
-                        <li><a href="#">Carreiras</a></li>
-                        <li><a href="#">Comunidade</a></li>
-                        <li><a href="#">Acessibilidade</a></li>
-                    </ul>
+                    <h3>TodoOutletVE</h3>
+                    <p>Moda e tecnologia com os melhores preços</p>
                 </div>
                 
                 <div class="footer-section">
-                    <h3>Ganhe dinheiro conosco</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Venda na TodoOutletVE</a></li>
-                        <li><a href="#">Proteja e construa sua marca</a></li>
-                        <li><a href="#">Seja um Associado</a></li>
-                    </ul>
+                    <h3>Atendimento</h3>
+                    <p>WhatsApp: (41) 99634-7646</p>
+                    <p>Email: todooutletve@gmail.com</p>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Pagamento</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Cartões de crédito</a></li>
-                        <li><a href="#">Cartões de débito</a></li>
-                        <li><a href="#">PIX</a></li>
-                        <li><a href="#">Boleto</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Deixe-nos ajudar você</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Sua conta</a></li>
-                        <li><a href="#">Frete e prazo de entrega</a></li>
-                        <li><a href="#">Devoluções e reembolsos</a></li>
-                        <li><a href="#">Ajuda</a></li>
-                    </ul>
+                    <p>Cartões, PIX, Boleto</p>
+                    <p>PIX: 08185140944</p>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 TodoOutletVE. Todos os direitos reservados.</p>
+                <p>&copy; 2024 TodoOutletVE. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
@@ -972,26 +690,23 @@
     <div class="modal" id="login-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">Fazer login</h2>
+                <h2>Fazer login</h2>
                 <button class="close-modal">&times;</button>
             </div>
             <form id="login-form">
                 <div class="form-group">
-                    <label for="login-email">E-mail ou número de telefone</label>
-                    <input type="text" id="login-email" class="form-control" required>
+                    <input type="text" class="form-control" placeholder="E-mail" required>
                 </div>
                 <div class="form-group">
-                    <label for="login-password">Senha</label>
-                    <input type="password" id="login-password" class="form-control" required>
+                    <input type="password" class="form-control" placeholder="Senha" required>
                 </div>
-                <button type="submit" class="submit-btn">Continuar</button>
+                <button type="submit" class="submit-btn">Entrar</button>
                 <button type="button" class="google-btn" id="google-login">
-                    <i class="fab fa-google"></i> Fazer login com Google
+                    <i class="fab fa-google"></i> Entrar com Google
                 </button>
-                <div class="form-footer">
-                    <p>Ao continuar, você concorda com as <a href="#">Condições de Uso</a> e a <a href="#">Política de Privacidade</a> da TodoOutletVE.</p>
-                    <p><a href="#" id="show-register">Não tem uma conta? Cadastre-se</a></p>
-                </div>
+                <p style="text-align:center; margin-top:1rem;">
+                    <a href="#" id="show-register">Criar conta</a>
+                </p>
             </form>
         </div>
     </div>
@@ -1000,40 +715,32 @@
     <div class="modal" id="register-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">Criar conta</h2>
+                <h2>Criar conta</h2>
                 <button class="close-modal">&times;</button>
             </div>
             <form id="register-form">
                 <div class="form-group">
-                    <label for="register-name">Seu nome</label>
-                    <input type="text" id="register-name" class="form-control" required>
+                    <input type="text" class="form-control" placeholder="Seu nome" required>
                 </div>
                 <div class="form-group">
-                    <label for="register-email">E-mail</label>
-                    <input type="email" id="register-email" class="form-control" required>
+                    <input type="email" class="form-control" placeholder="E-mail" required>
                 </div>
                 <div class="form-group">
-                    <label for="register-password">Senha</label>
-                    <input type="password" id="register-password" class="form-control" required>
+                    <input type="password" class="form-control" placeholder="Senha" required>
                 </div>
-                <div class="form-group">
-                    <label for="register-password-confirm">Confirmar senha</label>
-                    <input type="password" id="register-password-confirm" class="form-control" required>
-                </div>
-                <button type="submit" class="submit-btn">Criar sua conta da TodoOutletVE</button>
+                <button type="submit" class="submit-btn">Criar conta</button>
                 <button type="button" class="google-btn" id="google-register">
                     <i class="fab fa-google"></i> Cadastrar com Google
                 </button>
-                <div class="form-footer">
-                    <p>Ao criar uma conta, você concorda com as <a href="#">Condições de Uso</a> e a <a href="#">Política de Privacidade</a> da TodoOutletVE.</p>
-                    <p><a href="#" id="show-login">Já tem uma conta? Fazer login</a></p>
-                </div>
+                <p style="text-align:center; margin-top:1rem;">
+                    <a href="#" id="show-login">Já tenho conta</a>
+                </p>
             </form>
         </div>
     </div>
 
     <script>
-        // DOM Elements
+        // Elementos DOM
         const userMenu = document.getElementById('user-menu');
         const loginPrompt = document.getElementById('login-prompt');
         const userGreeting = document.getElementById('user-greeting');
@@ -1044,26 +751,21 @@
         const closeModalButtons = document.querySelectorAll('.close-modal');
         const showRegister = document.getElementById('show-register');
         const showLogin = document.getElementById('show-login');
-        const loginForm = document.getElementById('login-form');
-        const registerForm = document.getElementById('register-form');
         const googleLogin = document.getElementById('google-login');
         const googleRegister = document.getElementById('google-register');
         const logoutBtn = document.getElementById('logout-btn');
         const cartCount = document.getElementById('cart-count');
         const addToCartButtons = document.querySelectorAll('.add-to-cart');
-        const cartIcon = document.getElementById('cart-icon');
 
-        // Variables
+        // Variáveis
         let isLoggedIn = false;
-        let currentUser = '';
         let cartItems = 0;
 
         // Event Listeners
-        userMenu.addEventListener('click', function(e) {
+        userMenu.addEventListener('click', function() {
             if (!isLoggedIn) {
                 loginModal.style.display = 'flex';
             } else {
-                // Toggle dropdown
                 userDropdown.classList.toggle('active');
             }
         });
@@ -1087,137 +789,47 @@
             loginModal.style.display = 'flex';
         });
 
-        // Login with Google
-        googleLogin.addEventListener('click', function() {
-            loginWithGoogle();
-        });
-
-        googleRegister.addEventListener('click', function() {
-            loginWithGoogle();
-        });
-
-        // Login with Google function
+        // Login com Google
         function loginWithGoogle() {
-            // Simulate Google login
             isLoggedIn = true;
-            currentUser = "Usuário Google";
-            userName.textContent = currentUser;
-            
-            // Update UI
+            userName.textContent = "Usuário";
             loginPrompt.style.display = 'none';
             userGreeting.style.display = 'block';
-            
-            // Close modals
             loginModal.style.display = 'none';
             registerModal.style.display = 'none';
-            
-            // Show welcome message
-            alert(`Bem-vindo, ${currentUser}! Você fez login com sua conta Google.`);
+            alert('Login realizado com Google!');
         }
 
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value;
-            
-            // Simple login simulation
-            isLoggedIn = true;
-            currentUser = email.split('@')[0]; // Get username from email
-            userName.textContent = currentUser;
-            
-            // Update UI
-            loginPrompt.style.display = 'none';
-            userGreeting.style.display = 'block';
-            
-            // Close modal
-            loginModal.style.display = 'none';
-            
-            // Show welcome message
-            alert(`Bem-vindo de volta, ${currentUser}!`);
-        });
+        googleLogin.addEventListener('click', loginWithGoogle);
+        googleRegister.addEventListener('click', loginWithGoogle);
 
-        registerForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('register-name').value;
-            const email = document.getElementById('register-email').value;
-            const password = document.getElementById('register-password').value;
-            const passwordConfirm = document.getElementById('register-password-confirm').value;
-            
-            if (password !== passwordConfirm) {
-                alert('As senhas não coincidem!');
-                return;
-            }
-            
-            // Simple registration simulation
-            isLoggedIn = true;
-            currentUser = name;
-            userName.textContent = currentUser;
-            
-            // Update UI
-            loginPrompt.style.display = 'none';
-            userGreeting.style.display = 'block';
-            
-            // Close modal
-            registerModal.style.display = 'none';
-            
-            // Show welcome message
-            alert(`Conta criada com sucesso! Bem-vindo, ${currentUser}!`);
-        });
-
-        // Logout functionality
+        // Logout
         logoutBtn.addEventListener('click', function(e) {
             e.preventDefault();
             isLoggedIn = false;
-            currentUser = '';
-            
-            // Update UI
             userGreeting.style.display = 'none';
             loginPrompt.style.display = 'block';
             userDropdown.classList.remove('active');
-            
-            // Show logout message
-            alert('Você saiu da sua conta com sucesso.');
+            alert('Logout realizado!');
         });
 
-        // Add to cart functionality
+        // Carrinho
         addToCartButtons.forEach(button => {
             button.addEventListener('click', function() {
                 cartItems++;
                 cartCount.textContent = cartItems;
-                
-                // Visual feedback
                 this.textContent = 'Adicionado!';
-                this.style.background = '#2ecc71';
-                
                 setTimeout(() => {
                     this.textContent = 'Adicionar ao Carrinho';
-                    this.style.background = '';
                 }, 2000);
             });
         });
 
-        // Cart icon click
-        cartIcon.addEventListener('click', function() {
-            if (cartItems > 0) {
-                alert(`Você tem ${cartItems} itens no carrinho. Redirecionando para finalização da compra...`);
-                // In a real implementation, this would redirect to the checkout page
-            } else {
-                alert('Seu carrinho está vazio. Adicione produtos antes de finalizar a compra.');
-            }
-        });
-
-        // Close modal when clicking outside
+        // Fechar modais ao clicar fora
         window.addEventListener('click', function(e) {
-            if (e.target === loginModal) {
-                loginModal.style.display = 'none';
-            }
-            if (e.target === registerModal) {
-                registerModal.style.display = 'none';
-            }
-            
-            // Close dropdown when clicking outside
-            if (!userMenu.contains(e.target)) {
-                userDropdown.classList.remove('active');
-            }
+            if (e.target === loginModal) loginModal.style.display = 'none';
+            if (e.target === registerModal) registerModal.style.display = 'none';
+            if (!userMenu.contains(e.target)) userDropdown.classList.remove('active');
         });
     </script>
 </body>
